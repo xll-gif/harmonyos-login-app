@@ -9,16 +9,15 @@ struct HomePage {
   build() {
     Scroll() {
       Column() {
-        // 顶部间距
+        // 顶部空白，用于垂直居中
         Blank()
-          .height(80)
 
         // 成功图标
         Image($r('sys.symbol.checkmark_circle_fill'))
-          .width(80)
-          .height(80)
+          .width(100)
+          .height(100)
           .fillColor('#4CAF50')
-          .margin({ bottom: 24 })
+          .margin({ bottom: 32 })
 
         Text('欢迎回来！')
           .fontSize(24)
@@ -41,17 +40,21 @@ struct HomePage {
           .onClick(() => {
             router.back()
           })
-          .margin({ left: 24, right: 24 })
+          .margin({ left: 32, right: 32 })
 
+        // 底部空白，用于垂直居中
         Blank()
       }
       .width('100%')
-      .padding({ left: 0, right: 0 })
+      .height('100%')
+      .padding({ top: 0, bottom: 0 })
       .backgroundColor('#FFFFFF')
+      .justifyContent(FlexAlign.Center)
     }
     .width('100%')
     .height('100%')
     .backgroundColor('#FFFFFF')
     .scrollBar(BarState.Off)
+    .align(Alignment.Center)
   }
 }

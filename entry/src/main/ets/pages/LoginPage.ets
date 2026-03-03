@@ -12,23 +12,22 @@ struct LoginPage {
   build() {
     Scroll() {
       Column() {
-        // 顶部间距
+        // 顶部空白，用于垂直居中
         Blank()
-          .height(40)
 
         // Logo
         Image($r('app.media.app_icon'))
           .width(80)
           .height(80)
           .fillColor('#1890ff')
-          .margin({ bottom: 24 })
+          .margin({ bottom: 32 })
 
         // 标题
         Text('欢迎登录')
           .fontSize(24)
           .fontWeight(FontWeight.Bold)
           .fontColor('#000000')
-          .margin({ bottom: 40 })
+          .margin({ bottom: 48 })
 
         // 输入框容器
         Column() {
@@ -54,7 +53,7 @@ struct LoginPage {
           .padding({ left: 16, right: 16 })
           .backgroundColor('#F5F5F5')
           .borderRadius(10)
-          .margin({ bottom: 16 })
+          .margin({ bottom: 20 })
 
           // 密码输入
           Row() {
@@ -80,14 +79,22 @@ struct LoginPage {
           .borderRadius(10)
         }
         .width('100%')
-        .padding({ left: 24, right: 24 })
+        .padding({ left: 32, right: 32 })
+        .margin({ bottom: 24 })
 
         // 错误提示
         if (this.errorMessage) {
           Text(this.errorMessage)
             .fontSize(14)
             .fontColor('#FF0000')
-            .margin({ top: 8, bottom: 8 })
+            .height(20)
+            .margin({ bottom: 0 })
+        } else {
+          // 占位高度，保持布局稳定
+          Text('')
+            .fontSize(14)
+            .height(20)
+            .margin({ bottom: 0 })
         }
 
         // 登录按钮
@@ -101,18 +108,22 @@ struct LoginPage {
           .onClick(() => {
             this.login()
           })
-          .margin({ top: 24, left: 24, right: 24 })
+          .margin({ left: 32, right: 32, top: 24 })
 
+        // 底部空白，用于垂直居中
         Blank()
       }
       .width('100%')
-      .padding({ left: 0, right: 0 })
+      .height('100%')
+      .padding({ top: 0, bottom: 0 })
       .backgroundColor('#FFFFFF')
+      .justifyContent(FlexAlign.Center)
     }
     .width('100%')
     .height('100%')
     .backgroundColor('#FFFFFF')
     .scrollBar(BarState.Off)
+    .align(Alignment.Center)
   }
 
   private async login() {
