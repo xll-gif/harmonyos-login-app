@@ -14,9 +14,8 @@ struct LoginPage {
       Column() {
         // 顶部空白，用于垂直居中
         Blank()
-
         // Logo
-        Image($r('app.media.app_icon'))
+        Image($r('app.media.startIcon'))
           .width(80)
           .height(80)
           .fillColor('#1890ff')
